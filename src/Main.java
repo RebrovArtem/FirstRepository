@@ -7,9 +7,11 @@ public class Main {
         Person[] people = {new Person(1, "Tom"), new Person(2, "Bob"),new Person(3, "Tim")};
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Test.bin"));
              ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Test.bin"))){
-
-            oos.writeObject(people);
-            System.out.println("Объекты записаны в файл");
+            if (people.length>0){
+                oos.writeObject(people);
+                System.out.println("Объекты записаны в файл");
+            } else
+                throw new MyIOException();
 
             Person[] people2 = (Person[]) ois.readObject();
             System.out.println(Arrays.toString(people2));
