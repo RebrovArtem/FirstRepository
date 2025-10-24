@@ -1,6 +1,6 @@
 import java.io.Serial;
 
-public class MyIOException extends RuntimeException {
+public class MyIOException extends Exception {
     @Serial
     private static final long serialVersionUID = -4485933467358737598L;
 
